@@ -1,3 +1,20 @@
 .active-link{
     color: var(--clr-primary);
 }
+.fixed-menu-scroll{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    animation: showMenu 400ms ease-in 0s forwards;
+    z-index: 2;
+}
+
+@keyframes showMenu{
+    from{
+        top: -7rem;
+    }
+    to{
+        top: 0;
+    }
+}
