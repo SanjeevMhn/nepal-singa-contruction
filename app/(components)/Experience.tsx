@@ -36,7 +36,7 @@ const Experience = () => {
   ];
 
   return (
-    <div className="experience-cards bg-neutral-200 py-[5rem]">
+    <div className="experience-cards bg-blue-50 py-[5rem]">
       <div className="wrapper">
         <div className="grid grid-cols-[repeat(auto-fill,minmax(min(30rem,100%),1fr))] gap-[2.5rem]">
           {experienceList.map((exp) => (

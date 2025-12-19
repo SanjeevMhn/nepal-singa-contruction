@@ -74,20 +74,20 @@ const Machinery = () => {
   ];
 
   return (
-    <div className="machinery-list bg-white py-[5rem]">
+    <div className="machinery-list bg-blue-50 py-[5rem]">
       <div className="wrapper">
-        <h2 className="header-text text-[3.2rem] font-bold mb-[3.5rem] text-center">
+        <h2 className="header-text text-[2.4rem] md:text-[3.2rem] font-bold mb-[3.5rem] text-center">
           Machinery We Have
         </h2>
         <ul className="machinery-list grid grid-cols-[repeat(auto-fill,minmax(min(22rem,100%),1fr))] gap-[2.5rem]">
           {machineryList.map((machine) => (
-            <li className="machine bg-neutral-200 shadow-lg rounded-lg p-[1.5rem] flex flex-col items-center justify-between" key={machine.id}>
-              <div className="img-container w-[70%] aspect-square flex items-center justify-center">
-                <img src={machine.image.src} alt="machine" />
+            <li className="machine bg-white shadow-lg rounded-lg p-[1.5rem] flex flex-col items-center justify-between gap-[1.5rem]" key={machine.id}>
+              <div className="img-container w-[60%] max-h-[15rem] flex items-center justify-center mt-auto">
+                <img src={machine.image.src} alt="machine" className="w-full h-full object-contain" />
               </div>
-              <div className="data flex items-center gap-[2.5rem]">
-                <span className="number text-[3.5rem] font-bold">{machine.quantity}</span>
-                <span className="name text-[1.8rem] font-medium">{machine.name}</span>
+              <div className="data flex items-center gap-[1.5rem]">
+                <span className="number text-[2.5rem] font-bold">{machine.quantity}</span>
+                <span className="name text-[1.7rem] font-medium">{machine.name}</span>
               </div>
             </li>
           ))}

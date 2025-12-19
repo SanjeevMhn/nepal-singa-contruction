@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useSidenav } from "../(provider)/SidenavProvider";
+import logo from '../../public/logo.png'
 
 const Navbar = () => {
   const navlinks = [
@@ -67,10 +68,12 @@ const Navbar = () => {
   return (
     <nav className={`main-nav bg-white shadow-xl ${showMenu ? "fixed-menu-scroll" : ""}`}>
       <div className="wrapper flex justify-between items-center py-[1.2rem]">
-        <Link href={"/"} className="flex items-center gap-[0.5rem]">
-          <span className="icon-container text-[2.5rem]">|||</span>
-          <span className="company-name text-[2.8rem] font-bold text-neutral-900">
-            Company
+        <Link href={"/"} className="flex items-center gap-[1.5rem]">
+          <span className="icon-container w-[6.5rem] h-[6.5rem] md:w-[8rem] md:h-[8rem] flex items-center justify-center">
+            <img src={logo.src} alt="" className="w-full h-full object-contain" />
+          </span>
+          <span className="company-name text-[1.8rem] leading-8 font-bold text-neutral-900">
+           Nepal Sigha Construction 
           </span>
         </Link>
         <button type="button" className="btn cursor-pointer md:hidden" onClick={() => toggleSidenav(true)}>
