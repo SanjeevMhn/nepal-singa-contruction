@@ -13,15 +13,13 @@ const Testimonials = () => {
       name: "Mr. Tek Nath Pandey   (Chief Finance Officer)",
       company: "Nepal WellHope Agri-Tech LTD",
       testimonial: `The Contractor has duly executed the work as per contract documents and specification to our
-        entire satisfaction. We appreciate their excellence site management, highest standard of
-        quality ond professional spirit shown during the project period.`,
+        entire satisfaction.`,
     },
     {
       id: 3,
-      name: "Mr. Uddab Chaulagain   (Head-Administraion/Procurement Department)",
+      name: "Mr. Uddab Chaulagain   (Head-Administraion",
       company: "Agni Incorporated PVT LTD.",
-      testimonial: ` We appreciate their excellence site management, highest standard of
-        quality ond professional spirit shown during the project period. I strongly recomment the company for the biggest projects of the kind in future.`,
+      testimonial: `I strongly recomment the company for the biggest projects of the kind in future.`,
     },
   ];
 
