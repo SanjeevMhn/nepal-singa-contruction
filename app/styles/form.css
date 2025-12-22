@@ -1,0 +1,53 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .form-label {
+      font-size: 1.5rem;
+    }
+    .form-control {
+      padding: 0.5rem 1.2rem;
+      font-size: 1.7rem;
+      border: 1px solid #0f0f0f;
+      border-radius: 0.8rem;
+      background-color: #eff6ff;
+    }
+    .form-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  }
+}
+
+@media screen and (min-width: 890px) {
+  .form {
+    gap: 2rem;
+    .form-row {
+      flex-direction: row;
+      &.two-cols {
+        gap: 1.5rem;
+        .form-group {
+          flex: 0 0 calc(100% / 2);
+        }
+        .form-group {
+          &:nth-child(2) {
+            .form-control {
+              width: calc(100% - 1.5rem);
+            }
+          }
+          &:nth-child(2n) {
+            .form-control {
+              width: calc(100% - 1.5rem);
+            }
+          }
+        }
+      }
+    }
+  }
+}
