@@ -13,17 +13,17 @@ const Sidenav = () => {
 
     {
       id: 3,
-      link: "projects",
+      link: "/projects",
       name: "Projects",
     },
     {
       id: 4,
-      link: "about",
+      link: "/about",
       name: "About Us",
     },
     {
       id: 5,
-      link: "contact",
+      link: "/contact",
       name: "Contact",
     },
   ];
@@ -59,6 +59,7 @@ const Sidenav = () => {
               className={`text-[2rem] py-[0.8rem] font-medium text-neutral-800 ${
                 pathName == link.link ? "active-link" : ""
               }`}
+              onClick={() => toggleSidenav(false)}
             >
               {link.name}
             </Link>

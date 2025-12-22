@@ -20,17 +20,17 @@ const Navbar = () => {
     // },
     {
       id: 3,
-      link: "projects",
+      link: "/projects",
       name: "Projects",
     },
     {
       id: 4,
-      link: "about",
+      link: "/about",
       name: "About Us",
     },
     {
       id: 5,
-      link: "contact",
+      link: "/contact",
       name: "Contact",
     },
   ];
@@ -86,8 +86,8 @@ const Navbar = () => {
             <li className="list-item" key={link.id}>
               <Link
                 href={link.link}
-                className={`text-[1.8rem] py-[0.8rem] font-medium text-neutral-800 ${
-                  pathName == link.link ? "active-link" : ""
+                className={`text-[1.8rem] py-[0.8rem] font-medium ${
+                  pathName == link.link ? "text-[var(--clr-primary)]" : "text-neutral-800"
                 }`}
               >
                 {link.name}

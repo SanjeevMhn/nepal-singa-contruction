@@ -1,5 +1,6 @@
 .hero-container,
-.contact-us {
+.contact-us,
+.project-hero {
   width: 100%;
   position: relative;
   isolation: isolate;
@@ -27,5 +28,11 @@
 .contact-us{
   &:after{
     background-image: url("../../public/hero-2.jpg");
+  }
+}
+
+.project-hero{
+  &:after{
+    background-image: url("../../public/project-hero.jpg");
   }
 }
