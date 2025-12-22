@@ -66,7 +66,7 @@ const Testimonials = () => {
                 key={test.id}
               >
                 <div
-                  className="p-[2.5rem] shadow-lg border border-neutral-600 bg-white rounded-xl flex flex-col gap-[2rem] w-1/2 mx-auto"
+                  className="p-[2.5rem] shadow-lg border border-neutral-600 bg-white rounded-xl flex flex-col gap-[2rem] md:w-1/2 md:mx-auto"
                   onMouseEnter={() => setPaused(true)}
                   onMouseLeave={() => setPaused(false)}
                 >
@@ -92,12 +92,13 @@ const Testimonials = () => {
         <div className="carousel-dots flex items-center gap-[0.5rem] mx-auto">
           {dots.map((dot) => (
             <span
-              className={`dot w-[1.5rem] h-[1.5rem] rounded-full ${
+              className={`dot w-[1.5rem] h-[1.5rem] rounded-full cursor-pointer ${
                 currentSlide == dot
                   ? "bg-[var(--clr-primary)]"
                   : "bg-neutral-400"
               } `}
               key={dot}
+              onClick={() => setCurrentSlide(dot)}
             ></span>
           ))}
         </div>

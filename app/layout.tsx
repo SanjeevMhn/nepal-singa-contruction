@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./(components)/Navbar";
 import SidenavProvider from "./(provider)/SidenavProvider";
 import Sidenav from "./(components)/Sidenav";
+import Footer from "./(components)/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative isolate`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative isolate h-full bg-neutral-800!`}
       >
         <SidenavProvider>
           <Sidenav />
           <Navbar />
           {children}
+          <Footer />
         </SidenavProvider>
       </body>
     </html>

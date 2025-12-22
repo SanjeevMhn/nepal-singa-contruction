@@ -13,7 +13,7 @@ const Machinery = () => {
   const machineryList = [
     {
       id: 1,
-      name: "Concerte Mixers",
+      name: "Concerte Mixer",
       quantity: 4,
       image: mixer,
     },
@@ -25,13 +25,13 @@ const Machinery = () => {
     },
     {
       id: 3,
-      name: "Needle Vibrators (Electric)",
+      name: "(Electric) Needle Vibrator",
       quantity: 10,
       image: needleVibratorElectric,
     },
     {
       id: 4,
-      name: "Needle Vibrators (Diesel)",
+      name: "(Diesel) Needle Vibrator",
       quantity: 2,
       image: needleVibratorDiesel,
     },
@@ -87,7 +87,7 @@ const Machinery = () => {
               </div>
               <div className="data flex items-center gap-[1.5rem]">
                 <span className="number text-[2.5rem] font-bold">{machine.quantity}</span>
-                <span className="name text-[1.7rem] font-medium">{machine.name}</span>
+                <span className="name text-[1.7rem] font-medium">{machine.name}{machine.quantity > 1 ? "s" : ''}</span>
               </div>
             </li>
           ))}
