@@ -19,6 +19,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Nepal Singa Construction",
   description: "Experienced construction professionals delivering high-quality builds, renovations, and commercial projects with precision and care.",
+  icons: {
+    icon: '/favicon.ico', // Simple string
+    shortcut: '/shortcut-icon.png',
+    apple: '/apple-icon.png',
+  },
 };
 
 export default function RootLayout({
