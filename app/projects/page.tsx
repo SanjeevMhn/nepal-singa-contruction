@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ContactUs from "../(components)/ContactUs";
 
 const ProjectPage = () => {
   const projects = [
@@ -179,6 +180,7 @@ const ProjectPage = () => {
           </div>
         </div>
       </div>
+      <ContactUs />
     </section>
   );
 };
