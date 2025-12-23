@@ -28,7 +28,7 @@ const Projects = () => {
           <h2 className="header-text text-[2.4rem] md:text-[3.2rem] font-bold">
             Featured Projects
           </h2>
-          <Link href={'/'} className="text-[var(--clr-primary)] text-[1.8rem] flex items-center underline font-semibold">View All</Link>
+          <Link href={'/projects'} className="text-[var(--clr-primary)] text-[1.8rem] flex items-center underline font-semibold">View All</Link>
         </header>
         <ul className="featured-project-list grid grid-cols-[repeat(auto-fill,minmax(min(30rem,100%),1fr))] gap-[2.5rem]">
             {projectList.map(project => (
@@ -40,7 +40,7 @@ const Projects = () => {
                 </li>
             ))}
         </ul>
-        <Link href={'/'} className="bg-[var(--clr-primary)] text-white rounded-xl text-[1.6rem] inline-flex mx-auto p-[1rem_2rem]">View More</Link>
+        <Link href={'/projects'} className="bg-[var(--clr-primary)] text-white rounded-xl text-[1.6rem] inline-flex mx-auto p-[1rem_2rem]">View More</Link>
       </div>
     </div>
   );

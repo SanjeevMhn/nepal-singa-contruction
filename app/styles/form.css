@@ -29,15 +29,17 @@
         left: 1.2rem;
         font-size: 1.8rem;
         transition: all 200ms ease-in;
+        color: #696969;
       }
 
-      &:has(.form-control:not(:placeholder-shown), .form-control:focus){
-        .form-label{
+      &:has(.form-control:not(:placeholder-shown), .form-control:focus) {
+        .form-label {
           top: -1rem;
           left: 1rem;
           font-size: 1.2rem;
           padding: 0 0.5rem;
           background-color: #fff;
+          color: #000;
         }
       }
     }

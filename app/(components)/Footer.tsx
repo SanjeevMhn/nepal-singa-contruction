@@ -39,11 +39,11 @@ const Footer = () => {
             />
           </span>
           <span className="company-name text-[1.8rem] leading-8 font-bold ">
-            Nepal Sigha Construction
+            Nepal Singa Construction
           </span>
         </Link>
         <p className="info row-[2] col-[1] text-[1.8rem] font-semibold">
-          Nepal Sigha Construction is a trusted residential construction company
+          Nepal Singa Construction is a trusted residential construction company
           delivering high-quality, innovative, and reliable home-building
           solutions
         </p>

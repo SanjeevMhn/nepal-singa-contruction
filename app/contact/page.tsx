@@ -35,7 +35,7 @@ const ContactPage = () => {
                 you shortly.
               </p>
               <p className="text-[1.4rem] md:text-[1.6rem] p-[1.2rem] border-2 border-amber-500 bg-amber-200 text-amber-700 rounded-xl">
-                Note: 
+                *Note: 
                 All the fields below are required
               </p>
             </div>

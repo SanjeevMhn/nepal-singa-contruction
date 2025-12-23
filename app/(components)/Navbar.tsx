@@ -73,7 +73,7 @@ const Navbar = () => {
             <img src={logo.src} alt="" className="w-full h-full object-contain" />
           </span>
           <span className="company-name text-[1.8rem] leading-8 font-bold text-neutral-900">
-           Nepal Sigha Construction 
+           Nepal Singa Construction 
           </span>
         </Link>
         <button type="button" className="btn cursor-pointer md:hidden" onClick={() => toggleSidenav(true)}>
