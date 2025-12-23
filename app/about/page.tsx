@@ -82,7 +82,7 @@ const AboutPage = () => {
             for various clients, which include HMG, INGO and Private sector.{" "}
           </p>
 
-          <p className="text-[1.7rem] font-semibold text-neutral-700 pb-[1.2rem]">
+          <div className="text-[1.7rem] font-semibold text-neutral-700 pb-[1.2rem]">
             The company is confidently inclined towards the usage of computer
             applications in the modern day construction business. Nevertheless,
             it also implements the use of computer application for proper
@@ -96,7 +96,7 @@ const AboutPage = () => {
               <li>Structural Analysis</li>
               <li>Microsoft Office</li>
             </ul>
-          </p>
+          </div>
 
           <p className="text-[1.7rem] font-semibold text-neutral-700  pb-[1.2rem]">
             We are applying latest technology Lean Construction Management for

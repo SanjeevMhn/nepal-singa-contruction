@@ -39,7 +39,7 @@ const Testimonials = () => {
           currentSlide < testimonials.length - 1 ? currentSlide + 1 : 0
         );
       }
-    }, 4000);
+    }, 3000);
 
     return () => {
       clearInterval(interval);

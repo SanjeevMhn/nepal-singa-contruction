@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Hero = () => {
   return (
     <div className="hero-container flex items-center h-[calc(100vh-9rem)] md:h-[calc(100vh-10)]">
@@ -17,18 +19,18 @@ const Hero = () => {
           we undertake.
         </p>
         <div className="btn-group flex items-center gap-[2rem]">
-          <button
-            type="button"
+          <Link
+            href={"/projects"}
             className="btn p-[0.5rem_1rem] md:p-[1.2rem_2.5rem] bg-[var(--clr-primary)] text-white rounded-xl text-[1.5rem] md:text-[1.8rem] font-medium cursor-pointer"
           >
             View Our Work
-          </button>
-          <button
-            type="button"
+          </Link>
+          <Link
+            href={"/contact"}
             className="btn p-[0.5rem_1rem] md:p-[1.2rem_2.5rem] text-[var(--clr-primary)] rounded-xl bg-white text-[1.5rem] md:text-[1.8rem] font-medium cursor-pointer"
           >
             Request Consultation
-          </button>
+          </Link>
         </div>
       </div>
     </div>
