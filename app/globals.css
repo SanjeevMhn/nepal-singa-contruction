@@ -3,6 +3,7 @@
 @import "./styles/experience.css";
 @import "./styles/hero.css";
 @import "./styles/form.css";
+@import "./styles/table.css";
 
 :root {
   --background: #ffffff;
