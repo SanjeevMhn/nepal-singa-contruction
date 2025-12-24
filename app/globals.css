@@ -54,3 +54,27 @@ body {
   width: min(90%, 115rem);
   margin: 0 auto;
 }
+
+.progress-bar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .progress-label {
+    color: #fff;
+    font-size: 1.4rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  progress {
+    overflow: hidden;
+    &::-webkit-progress-bar {
+      border-radius: 100vh;
+    }
+    &::-webkit-progress-value {
+      background-color: var(--clr-primary);
+      border-radius: 100vh;
+    }
+  }
+}

@@ -155,22 +155,22 @@ const ProjectPage = () => {
               </thead>
               <tbody>
                 {projects.map((project, index) => (
-                  <tr
-                    key={index}
-                  >
-                    <td>
-                     {index + 1}
-                    </td>
+                  <tr key={index}>
+                    <td>{index + 1}</td>
                     <td>{project.description}</td>
                     <td>{project.location}</td>
                     <td>{project.date ?? 2082}</td>
                     <td>
                       <div className="p-[1.5rem] pl-0">
-                        <progress
-                          max={100}
-                          value={Number(project.completed.split("%")[0])}
-                          className="rounded-full"
-                        ></progress>
+                        <div className="progress-bar-container">
+                          <label htmlFor="" className="progress-label">
+                            {project.completed}
+                          </label>
+                          <progress
+                            max={100}
+                            value={Number(project.completed.split("%")[0])}
+                          ></progress>
+                        </div>
                       </div>
                     </td>
                   </tr>
