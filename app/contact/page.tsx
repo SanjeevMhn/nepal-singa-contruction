@@ -66,7 +66,7 @@ const ContactPage = () => {
                 />
               </div>
             </div>
-            <div className="form-row two-cols">
+            <div className="form-row">
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
                   Email
