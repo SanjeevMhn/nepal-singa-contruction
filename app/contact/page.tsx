@@ -3,7 +3,6 @@ import Link from "next/link";
 import "../styles/form.css";
 import formHero from "../../public/form-hero.jpg";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { error } from "console";
 
 type ContactFormType = {
   full_name: string;
@@ -18,36 +17,36 @@ const ContactPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm<ContactFormType>();
 
-
-  const handleContactForm:SubmitHandler<ContactFormType> = (data) => {
-    const recipient = 'nepalsinga07@gmail.com'
-    const subject = encodeURIComponent(data.subject)
-    const bodyText = `${data.body}\n\n`+
-      `Name: ${data.full_name}\n`+
+  const handleContactForm: SubmitHandler<ContactFormType> = (data) => {
+    const recipient = "nepalsinga07@gmail.com";
+    const subject = encodeURIComponent(data.subject);
+    const bodyText =
+      `${data.body}\n\n` +
+      `Name: ${data.full_name}\n` +
       `Email: ${data.email}\n` +
       `Phone: ${data.phone}`;
 
-    const encodedBody = encodeURIComponent(bodyText)
+    const encodedBody = encodeURIComponent(bodyText);
 
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1` +
-                     `&to=${encodeURIComponent(recipient)}` +
-                     `&su=${subject}`+
-                     `&body=${encodedBody}`;
+    const gmailUrl =
+      `https://mail.google.com/mail/?view=cm&fs=1` +
+      `&to=${encodeURIComponent(recipient)}` +
+      `&su=${subject}` +
+      `&body=${encodedBody}`;
 
-
-    let mailTo = document.createElement('a')
-    mailTo.setAttribute('href', gmailUrl)
-    mailTo.setAttribute('target', '_blank')
-    mailTo.setAttribute('rel', 'noopener noreferrer')
-    document.body.appendChild(mailTo)
-    mailTo.click()
-    document.body.removeChild(mailTo)
-    mailTo.remove()
-    reset()
-  }
+    let mailTo = document.createElement("a");
+    mailTo.setAttribute("href", gmailUrl);
+    mailTo.setAttribute("target", "_blank");
+    mailTo.setAttribute("rel", "noopener noreferrer");
+    document.body.appendChild(mailTo);
+    mailTo.click();
+    document.body.removeChild(mailTo);
+    mailTo.remove();
+    reset();
+  };
 
   return (
     <section className="about-page bg-blue-50">
@@ -71,7 +70,10 @@ const ContactPage = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <form onSubmit={handleSubmit(handleContactForm)} className="contact-form form p-[2.5rem] my-auto w-full xl:col-[2]">
+          <form
+            onSubmit={handleSubmit(handleContactForm)}
+            className="contact-form form p-[2.5rem] my-auto w-full xl:col-[2]"
+          >
             <div className="form-title flex flex-col gap-[0.5rem]  mb-[2rem]">
               <h2 className="text-[1.8rem] md:text-[2.4rem] font-bold">
                 Let's Build Your Dream Home Together
@@ -120,7 +122,9 @@ const ContactPage = () => {
                 <input
                   type="tel"
                   id="phone"
-                  className="form-control"
+                  className={`form-control ${
+                    errors.phone ? "border-red-700! outline-red-700!" : ""
+                  }`}
                   placeholder="Phone"
                   {...register("phone", {
                     required: {
@@ -148,7 +152,9 @@ const ContactPage = () => {
                 <input
                   type="email"
                   id=""
-                  className="form-control"
+                  className={`form-control ${
+                    errors.email ? "border-red-700! outline-red-700!" : ""
+                  }`}
                   placeholder="Email"
                   {...register("email", {
                     required: {
@@ -174,7 +180,9 @@ const ContactPage = () => {
                 <input
                   type="text"
                   id="subject"
-                  className="form-control"
+                  className={`form-control ${
+                    errors.subject ? "border-red-700! outline-red-700!" : ""
+                  }`}
                   placeholder="Subject"
                   {...register("subject", {
                     required: {
@@ -198,7 +206,9 @@ const ContactPage = () => {
                 </label>
                 <textarea
                   id="message"
-                  className="form-control"
+                  className={`form-control ${
+                    errors.body ? "border-red-700! outline-red-700!" : ""
+                  }`}
                   placeholder="Message"
                   rows={3}
                   {...register("body", {
