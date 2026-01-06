@@ -47,7 +47,7 @@ const Footer = () => {
           delivering high-quality, innovative, and reliable home-building
           solutions
         </p>
-        <div className="quick-links row-[3] col-[1] lg:row-[1/span_2] lg:col-[2] flex flex-col justify-center">
+        <div className="quick-links row-[3] col-[1] lg:row-[1/span_2] lg:col-[2] flex flex-col items-center justify-center">
           <h2 className="text-[1.8rem] underline">Quick Links</h2>
           <ol className="link-list pt-[1.2rem]" type="1">
             {navlinks.map((link) => (
