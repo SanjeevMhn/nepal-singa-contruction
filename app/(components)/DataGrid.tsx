@@ -9,14 +9,17 @@ type DataGridProps = {
 const DataGrid: FC<DataGridProps> = ({ data }) => {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
+  const [onGoing, setOnGoing] = useState<boolean>(false);
 
   const totalPages = Math.ceil(data.length / pageSize);
 
   const paginatedData = useMemo(() => {
     let startIndex = (page - 1) * pageSize;
     let endIndex = startIndex + pageSize;
-    return data.slice(startIndex, endIndex);
-  }, [page, pageSize]);
+    return onGoing
+      ? data.filter((da) => da.completed_date == "")
+      : data.slice(startIndex, endIndex);
+  }, [page, pageSize, onGoing]);
 
   const handlePageSizeChange = (size: number) => {
     setPageSize(size);
@@ -24,7 +27,27 @@ const DataGrid: FC<DataGridProps> = ({ data }) => {
   };
 
   return (
-    <div className="project-list-table-container bg-white overflow-x-auto py-[2.5rem] pb-0! rounded-[1.2rem] shadow-xl flex flex-col">
+    <div className="project-list-table-container bg-white overflow-x-auto rounded-[1.2rem] shadow-xl flex flex-col">
+      <header className="p-[1.5rem] flex items-center justify-end border-b-2 border-neutral-300">
+        <div className="form-group flex items-center gap-[0.5rem]">
+          <input
+            type="checkbox"
+            id="ongoing"
+            name="ongoing"
+            className="w-[2rem] h-[2rem]"
+            onChange={() => {
+              setPage(1);
+              setOnGoing((prev) => !prev);
+            }}
+          />
+          <label
+            htmlFor="ongoing"
+            className="form-label text-[1.5rem] font-medium cursor-pointer"
+          >
+            Show Ongoing Projects
+          </label>
+        </div>
+      </header>
       <table className="w-full table grow">
         <thead>
           <tr>
@@ -71,7 +94,7 @@ const DataGrid: FC<DataGridProps> = ({ data }) => {
           ))}
         </tbody>
       </table>
-      <footer className="border-t-2 border-slate-500 table-pagination mt-auto flex flex-col sm:flex-row items-center justify-end gap-[0.75rem] p-[1.5rem]">
+      <footer className="border-t-2 border-neutral-300 table-pagination mt-auto flex flex-col sm:flex-row items-center justify-end gap-[0.75rem] p-[1.5rem]">
         <p>Total Items</p>
         <select
           className="btn p-[0.5rem] mr-[1.5rem] bg-white border border-slate-400 rounded-lg flex items-center justify-center cursor-pointer"
