@@ -2,109 +2,78 @@
 
 import { FC, useMemo, useState } from "react";
 
-type DataGridProps = {
+type ImageGridProps = {
   data: Array<any>;
 };
 
-const DataGrid: FC<DataGridProps> = ({ data }) => {
-  const [page, setPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(10);
-  const [onGoing, setOnGoing] = useState<boolean>(false);
+const ImageGrid: FC<ImageGridProps> = ({ data }) => {
+  const sortedData = useMemo(() => {
+    const groupedData = data.reduce((acc, curr) => {
+      const id = curr.id;
+      if (!acc[id]) {
+        const updatedObj = {
+          id: curr.id,
+          name: curr.name,
+          is_completed: curr.is_completed,
+          images: [],
+        };
+        acc[id] = updatedObj;
+        if (curr.img) {
+          acc[id].images!.push(curr.img);
+        }
+      } else {
+        acc[id] = {
+          ...acc[id],
+          images: [...acc[id].images, curr.img],
+        };
+      }
 
-  const totalPages = Math.ceil(data.length / pageSize);
+      return acc;
+    }, {});
+
+    return Object.values(groupedData);
+  }, [data]);
+
+  const [page, setPage] = useState<number>(1);
+  const pageSize = 4;
+
+  const totalPages = Math.ceil(sortedData.length / pageSize);
 
   const paginatedData = useMemo(() => {
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    return onGoing
-      ? data.filter((da) => da.completed_date == "")
-      : data.slice(startIndex, endIndex);
-  }, [page, pageSize, onGoing, data]);
 
-  const handlePageSizeChange = (size: number) => {
-    setPageSize(size);
-    setPage(1);
-  };
+    return sortedData.slice(startIndex, endIndex);
+  }, [sortedData, page]);
 
   return (
-    <div className="project-list-table-container bg-white overflow-x-auto rounded-[1.2rem] shadow-xl flex flex-col">
-      <header className="p-[1.5rem] flex items-center justify-end border-b-2 border-neutral-300">
-        <div className="form-group flex items-center gap-[0.5rem]">
-          <input
-            type="checkbox"
-            id="ongoing"
-            name="ongoing"
-            className="w-[2rem] h-[2rem]"
-            onChange={() => {
-              setPage(1);
-              setOnGoing((prev) => !prev);
-            }}
-          />
-          <label
-            htmlFor="ongoing"
-            className="form-label text-[1.5rem] font-medium cursor-pointer"
+    <>
+      <div className="image-grid-container grid grid-cols-[repeat(auto-fill,minmax(min(40rem,100%),1fr))] gap-[1.5rem]">
+        {paginatedData.map((da: any, index: number) => (
+          <div
+            className="project-card  bg-white shadow-xl flex flex-col gap-[1rem] rounded-2xl p-[2rem]"
+            key={index}
           >
-            Show Ongoing Projects
-          </label>
-        </div>
-      </header>
-      <table className="w-full table grow">
-        <thead>
-          <tr>
-            <th>S.N</th>
-            <th className="min-w-[35rem]">Description</th>
-            <th>Location</th>
-            <th className="min-w-[15rem]">Completed Date</th>
-            <th>Completed</th>
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedData.map((project: any, index: number) => (
-            <tr key={index}>
-              <td>{project.id}</td>
-              <td>
-                <p className="line-clamp-3 text-ellipsis overflow-hidden md:line-clamp-none md:whitespace-normal md:overflow-visible">
-                  {project.name}
-                </p>
-              </td>
-              <td>{project.location}</td>
-              <td>
-                {project.completed_date !== "" ? (
-                  project.completed_date
-                ) : (
-                  <p className="text-amber-800 font-medium p-[0.25rem_1.5rem] bg-amber-200 border-2 border-amber-600 rounded-full text-[1.4rem] text-center">
-                    ONGOING
-                  </p>
-                )}
-              </td>
-              <td>
-                <div className="p-[1.5rem] pl-0">
-                  <div className="progress-bar-container">
-                    <label htmlFor="" className="progress-label">
-                      {project.completed_percent}%
-                    </label>
-                    <progress
-                      max={100}
-                      value={Number(project.completed_percent)}
-                    ></progress>
-                  </div>
+            <div className="flex w-full items-center gap-[1rem]">
+              {da.images.map((im: any, index: number) => (
+                <div
+                  key={index * 2}
+                  className="w-[25rem] h-[25rem] flex grow items-center justify-center rounded-lg overflow-hidden bg-blue-100"
+                >
+                  <img
+                    src={im}
+                    alt=""
+                    className="w-full h-full object-contain"
+                  />
                 </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <footer className="border-t-2 border-neutral-300 table-pagination mt-auto flex flex-col sm:flex-row items-center justify-end gap-[0.75rem] p-[1.5rem]">
-        <p>Total Items</p>
-        <select
-          className="btn p-[0.5rem] mr-[1.5rem] bg-white border border-slate-400 rounded-lg flex items-center justify-center cursor-pointer"
-          onChange={(e) => handlePageSizeChange(Number(e.target.value))}
-        >
-          <option>10</option>
-          <option>25</option>
-          <option>50</option>
-          <option>100</option>
-        </select>
+              ))}
+            </div>
+
+            <h2 className="text-[1.7rem] font-medium">{da.name}</h2>
+          </div>
+        ))}
+      </div>
+      <footer className="image-grid-pagination mt-auto flex flex-col sm:flex-row items-center justify-end gap-[0.75rem] p-[1.5rem]">
         <p className="pr-[1.5rem]">
           Showing{" "}
           {page == 1
@@ -181,8 +150,8 @@ const DataGrid: FC<DataGridProps> = ({ data }) => {
           </button>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 
-export default DataGrid;
+export default ImageGrid;

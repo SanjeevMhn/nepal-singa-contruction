@@ -1,12 +1,22 @@
 import Link from "next/link";
 import ContactUs from "../(components)/ContactUs";
 import DataGrid from "../(components)/DataGrid";
+import ImageGrid from "../(components)/ImageGrid";
+import "../styles/projects.css";
 
 const ProjectPage = async () => {
-  const data = await fetch(
-    "https://script.google.com/macros/s/AKfycbxKBiJpHSdqN4bJn1h8xVsoU5u8QBbmnzNAAHYtkR9qpM89deAOamiahXGDhSAz6BbY/exec",
-  );
-  const projects: Array<any> = await data.json();
+  const [imagesData, projectsData] = await Promise.all([
+    fetch(
+      "https://script.google.com/macros/s/AKfycbzMEMw4nnuwz2lAovOFZqQpt0_rSiIDQ03Ybc81CokEmeCAAWvJ5ankNKcbYO_BMYZP/exec",
+    ),
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxKBiJpHSdqN4bJn1h8xVsoU5u8QBbmnzNAAHYtkR9qpM89deAOamiahXGDhSAz6BbY/exec",
+    ),
+  ]);
+  const [images, projects] = await Promise.all([
+    imagesData.json(),
+    projectsData.json(),
+  ]);
   return (
     <section className="projects-page bg-white">
       <header className="project-hero py-[8.5rem]">
@@ -21,8 +31,29 @@ const ProjectPage = async () => {
         </div>
       </header>
       <div className="project-list-container bg-blue-50">
-        <div className="wrapper py-[5rem]">
-          <DataGrid data={projects} />
+        <div className="wrapper py-[5rem] flex flex-col gap-[2.5rem]">
+          <header className="view-type">
+            <label htmlFor="grid_view" className="">
+              <input
+                type="radio"
+                name="view"
+                id="grid_view"
+                className=""
+                defaultChecked
+              />
+              Gallery
+            </label>
+            <label htmlFor="list_view" className="">
+              <input type="radio" name="view" id="list_view" className="" />
+              Project List
+            </label>
+          </header>
+          <div className="image-grid-section hidden">
+            <ImageGrid data={images} />
+          </div>
+          <div className="data-grid-section hidden">
+            <DataGrid data={projects} />
+          </div>
         </div>
       </div>
       <ContactUs />
