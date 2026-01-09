@@ -58,7 +58,7 @@ const ImageGrid: FC<ImageGridProps> = ({ data }) => {
               {da.images.map((im: any, index: number) => (
                 <div
                   key={index * 2}
-                  className="w-[25rem] h-[25rem] flex grow items-center justify-center rounded-lg overflow-hidden bg-blue-100"
+                  className="w-[32rem] h-[32rem] flex grow items-center justify-center rounded-lg overflow-hidden bg-blue-100"
                 >
                   <img
                     src={im}
@@ -68,7 +68,13 @@ const ImageGrid: FC<ImageGridProps> = ({ data }) => {
                 </div>
               ))}
             </div>
-
+            {!da.is_completed ? (
+              <div className="ongoing-indicator pt-[1.5rem]">
+                <span className="text-amber-800 font-medium p-[0.25rem_1.5rem] bg-amber-200 border-2 border-amber-600 rounded-full text-[1.4rem] text-center">
+                  ONGOING
+                </span>
+              </div>
+            ) : null}
             <h2 className="text-[1.7rem] font-medium">{da.name}</h2>
           </div>
         ))}

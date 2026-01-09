@@ -7,7 +7,7 @@ import "../styles/projects.css";
 const ProjectPage = async () => {
   const [imagesData, projectsData] = await Promise.all([
     fetch(
-      "https://script.google.com/macros/s/AKfycbzMEMw4nnuwz2lAovOFZqQpt0_rSiIDQ03Ybc81CokEmeCAAWvJ5ankNKcbYO_BMYZP/exec",
+      "https://script.google.com/macros/s/AKfycbxT4hvXq-G55uiUwj90ttvMNTWbpdKIpBX2AXrgNWvdctSJkfzhlCh43xMq38LTFlk5/exec"
     ),
     fetch(
       "https://script.google.com/macros/s/AKfycbxKBiJpHSdqN4bJn1h8xVsoU5u8QBbmnzNAAHYtkR9qpM89deAOamiahXGDhSAz6BbY/exec",
