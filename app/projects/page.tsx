@@ -19,7 +19,7 @@ const ProjectPage = async () => {
   ]);
   return (
     <section className="projects-page bg-white">
-      <header className="project-hero py-[8.5rem]">
+      <header className="project-hero py-[8.5rem]" id="grid">
         <div className="wrapper">
           <h2 className="text-[4.8rem] font-bold text-white text-center">
             Our Projects
@@ -30,7 +30,7 @@ const ProjectPage = async () => {
           </div>
         </div>
       </header>
-      <div className="project-list-container bg-blue-50">
+      <div className="project-list-container bg-blue-50" >
         <div className="wrapper py-[5rem] flex flex-col gap-[2.5rem]">
           <header className="view-type">
             <label htmlFor="grid_view" className="">
