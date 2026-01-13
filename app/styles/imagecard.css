@@ -24,3 +24,22 @@
     border-radius: 100vh;
   }
 }
+
+.loader{
+  --size: 3.5rem;
+  height: var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  border: 6px solid #daa520;
+  border-bottom-color: #daa52041;
+  animation: spin 600ms linear infinite;
+}
+
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}

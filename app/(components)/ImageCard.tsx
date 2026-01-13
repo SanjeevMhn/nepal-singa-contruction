@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "../styles/imagecard.css";
 
 type ImageCardType = {
@@ -9,15 +9,23 @@ type ImageCardType = {
 
 const ImageCard: FC<ImageCardType> = ({ data }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(1);
+  const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
   const gotoPrevImage = () => {
     setCurrentImageIndex((prev) => (prev !== 0 ? prev - 1 : prev));
+    setImgLoaded(false);
   };
+
+  useEffect(() => {
+    setImgLoaded(false);
+    setCurrentImageIndex(1)
+  }, [data]);
 
   const gotoNextImage = () => {
     setCurrentImageIndex((prev) =>
       prev !== data.images.length ? prev + 1 : prev
     );
+    setImgLoaded(false);
   };
   return (
     <div className="project-card  bg-white shadow-xl flex flex-col gap-[1rem] rounded-2xl p-[2rem]">
@@ -28,8 +36,12 @@ const ImageCard: FC<ImageCardType> = ({ data }) => {
               <img
                 src={data.images[currentImageIndex - 1]}
                 alt=""
-                className="w-full h-full object-contain"
+                className={`w-full h-full object-contain ${
+                  !imgLoaded && "hidden"
+                }`}
+                onLoad={() => setImgLoaded(true)}
               />
+              {!imgLoaded ? <div className="loader"></div> : null}
             </div>
             <button
               type="button"
@@ -65,7 +77,14 @@ const ImageCard: FC<ImageCardType> = ({ data }) => {
             </button>
             <div className="indicator-container flex items-center gap-[1rem] border border-neutral-600 shadow-xl">
               {data.images.map((_: any, ind: number) => (
-                <div className={`indicator w-[1.2rem] h-[1.2rem] rounded-full ${currentImageIndex == ind + 1 ? "bg-[var(--clr-primary)]" : "bg-neutral-400"}`} key={ind}></div>
+                <div
+                  className={`indicator w-[1.2rem] h-[1.2rem] rounded-full ${
+                    currentImageIndex == ind + 1
+                      ? "bg-[var(--clr-primary)]"
+                      : "bg-neutral-400"
+                  }`}
+                  key={ind}
+                ></div>
               ))}
             </div>
           </>
@@ -74,8 +93,12 @@ const ImageCard: FC<ImageCardType> = ({ data }) => {
             <img
               src={data.images[0]}
               alt=""
-              className="w-full h-full object-contain"
+              className={`w-full h-full object-contain ${
+                !imgLoaded && "hidden"
+              }`}
+              onLoad={() => setImgLoaded(true)}
             />
+            {!imgLoaded ? <div className="loader"></div> : null}
           </div>
         )}
       </div>

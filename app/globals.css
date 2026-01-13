@@ -26,7 +26,7 @@ html{
 
 /* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #Gjuu0a0a0a;
     --foreground: #ededed;
   }
 } */
@@ -80,5 +80,24 @@ body {
       background-color: var(--clr-primary);
       border-radius: 100vh;
     }
+  }
+}
+
+.loader{
+  --size: 3.2rem;
+  height: var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  border: 2px solid orangered;
+  border-bottom-width: 0;
+  animation: spin linear 0 1 infinite;
+}
+
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
   }
 }
