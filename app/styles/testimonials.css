@@ -1,0 +1,15 @@
+.testimonial-list-wrapper{
+    position: relative;
+    .btn{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    .prev-btn{
+        left: calc(-1 * calc(3.5rem / 2));
+    }
+    .next-btn{
+        right: calc(-1 * calc(3.5rem / 2));
+    }
+}
