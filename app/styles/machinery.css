@@ -1,0 +1,40 @@
+.vehicles-list,
+.machinery-list{
+    display: none;
+}
+.tab-selector{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+
+    label{
+        padding: 0.5rem 1.2rem;
+        font-size: 1.5rem;
+        border: 1px solid var(--clr-primary);
+        background-color: #fff;
+        color: var(--clr-primary);
+        border-radius: 100vh;
+        cursor: pointer;
+        input{
+            width: 0;
+        }
+        &:has(input:checked){
+            color: #fff;
+            background-color: var(--clr-primary);
+        }
+    }
+
+    &:has(label input#vehicles:checked){
+        & ~ .vehicles-list{
+            display: grid;
+        }
+    }
+
+    &:has(label input#construction:checked){
+        & ~ .machinery-list{
+            display: grid;
+        }
+    }
+}
